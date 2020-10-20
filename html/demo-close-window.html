@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="close-window-btn" type="button">关窗</button>
+
+<script type="text/javascript">
+    onload = () => {
+        let closeWindowBtn = document.querySelector("#close-window-btn");
+
+        /*箭头函数的函数体中，如果只有一行代码，可以省略大括号。*/
+        closeWindowBtn.onclick = () => close();
+        /*closeWindowBtn.onclick = () => top.close();*/
+    };
+</script>
+
+</body>
+</html>
