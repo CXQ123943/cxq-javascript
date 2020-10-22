@@ -19,7 +19,7 @@ window.onload = () => {
 
         /*密码为空直接返回，密码框重设焦点*/
         let passwordIpt = document.querySelector("#password-ipt");
-        if ("" === passwordIpt["value"] || null === passwordIpt["value"]) {
+        if (passwordIpt["value"] === "" || passwordIpt["value"] === null) {
             alert("密码不能为空！");
             passwordIpt.focus();
             return;
