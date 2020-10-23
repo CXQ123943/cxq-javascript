@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="data-type-btn" type="button">JS六大数据类型</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+
+        document.querySelector("#data-type-btn").onclick = () => {
+            let result;
+            console.log(typeof result);
+
+            result = 1;
+            console.log(typeof result);
+
+            result = "abc";
+            console.log(typeof result);
+
+            result = true;
+            console.log(typeof result);
+
+            result = function () {};
+            console.log(typeof result);
+
+            result = () => {};
+            console.log(typeof result);
+
+            result = document.querySelector("#data-type-btn");
+            console.log(typeof result);
+        };
+    }
+
+</script>
+</body>
+</html>
