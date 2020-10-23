@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>空值校验直接提交</title>
+    <title>按钮演示空值校验</title>
 </head>
 <body>
 
-<form id="login-form">
+<form id="login-form" method="get" action="#">
     <label>
         <span>账号 ：</span>
         <input id="username-ipt" type="text" name="username"/>
@@ -15,10 +15,12 @@
         <span>密码 ：</span>
         <input id="password-ipt" type="password" name="password"/>
     </label>
-    <button type="submit">登录</button>
+    <label>
+        <button id="login-btn">登录</button>
+    </label>
 </form>
 
-<script type="text/javascript" src="../script/verify-by-submit.js"></script>
+<script type="text/javascript" src="../../script/demo-script/verify-by-button.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="var-default-value-btn" type="button">var变量具有默认值undefined</button>
+<button id="var-pre-analysis-btn" type="button">var变量会发生预解析</button>
+<button id="var-duplicate-name-btn" type="button">var变量允许变量名重复</button>
+
+<script type="text/javascript">
+
+    window.onload = () => {
+
+        document.querySelector("#var-default-value-btn").onclick = () => {
+            var money;
+            console.log(money);
+        };
+
+        document.querySelector("#var-pre-analysis-btn").onclick = () => {
+            console.log(money);
+            if (true) {
+                var money = 100;
+            }
+
+            /*预解析后相当于如下代码：*/
+            /*
+            var money;
+            console.log(money);
+            if (true) {
+                money = 100;
+            }
+            */
+
+        };
+
+        document.querySelector("#var-duplicate-name-btn").onclick = () => {
+            var num = 100;
+            var num = 200;
+            console.log(num);
+
+            /*预解析后相当于如下代码：*/
+            /*
+            var num;
+            num = 100;
+            num = 200;
+            console.log(num);
+            */
+        };
+    };
+
+</script>
+</body>
+</html>
