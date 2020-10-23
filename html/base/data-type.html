@@ -6,8 +6,19 @@
 </head>
 <body>
 
-<button id="data-type-btn" type="button">JS六大数据类型</button>
+<button id="data-type-btn" type="button">基本数据类型</button>
 <br/>
+<button id="true-false-btn" type="button">布尔真假规范</button>
+<br/>
+<button id="type-conversion-btn" type="button">类型显示转换</button>
+<br/>
+<button id="nan-btn" type="button">isNaN函数</button>
+<br/>
+<button id="equal-btn" type="button">全等比较</button>
+<br/>
+<button id="string-subtraction-btn" type="button">字符串相减</button>
+<br/>
+
 
 <script type="text/javascript">
     window.onload = () => {
@@ -25,14 +36,57 @@
             result = true;
             console.log(typeof result);
 
-            result = function () {};
+            result = function () {
+            };
             console.log(typeof result);
 
-            result = () => {};
+            result = () => {
+            };
             console.log(typeof result);
 
             result = document.querySelector("#data-type-btn");
             console.log(typeof result);
+        };
+
+        document.querySelector("#true-false-btn").onclick = () => {
+            let money = 0;
+            let name = "";
+            console.log(money ? "money true..." : "money false...");
+            console.log(name ? "name true..." : "name false...");
+        };
+
+        document.querySelector("#type-conversion-btn").onclick = () => {
+            let num;
+
+            num = "12abc34";
+            console.log(window.parseInt(num));
+
+            num = "123abc34";
+            console.log(window.parseFloat(num));
+        };
+
+        document.querySelector("#nan-btn").onclick = () => {
+            let num;
+
+            num = 1234;
+            console.log(isNaN(num));
+
+            num = "1234a";
+            console.log(isNaN(num));
+        };
+
+        document.querySelector("#equal-btn").onclick = () => {
+            let numA = 1234;
+            let numB = "1234";
+
+            console.log(numA == numB);
+            console.log(numA === numB);
+        };
+
+        document.querySelector("#string-subtraction-btn").onclick = () => {
+            let numA = "100";
+            let numB = "1";
+            console.log(numA - numB);
         };
     }
 
