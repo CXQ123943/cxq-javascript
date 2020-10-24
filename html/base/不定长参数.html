@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不定长参数列表</title>
+</head>
+<body>
+
+<button id="es5-function-args-btn" type="button">ES5的不定长参数</button>
+<br/>
+<button id="es6-function-args-btn" type="button">ES6的不定长参数</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+
+        document.querySelector("#es5-function-args-btn").onclick = () => {
+            console.log(es5add(1, 2, 3, 4, 5));
+        };
+
+        document.querySelector("#es6-function-args-btn").onclick = () => {
+            console.log(es6add(1, 2, 3, 4, 5));
+        };
+
+    };
+
+    function es5add() {
+        let result = 0;
+        for (let i = 0, j = arguments.length; i < j; i++) {
+            result += arguments[i];
+        }
+        return result;
+    }
+
+    let es6add = (...params) => {
+        let result = 0;
+        for (let i = 0, j = params.length; i < j; i++) {
+            result += params[i];
+        }
+        return result;
+    };
+
+</script>
+
+</body>
+</html>
