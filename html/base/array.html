@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+
+<button id="declaration-btn" type="button">数组声明</button>
+<br/>
+<button id="for-btn" type="button">for遍历</button>
+<br/>
+<button id="for-in-btn" type="button">for-in遍历</button>
+<br/>
+<button id="foreach-btn" type="button">forEach()遍历</button>
+<br/>
+
+
+<script type="text/javascript">
+    window.onload = () => {
+        document.querySelector("#declaration-btn").onclick = () => {
+            let arrA = new Array(1, 2, 3, 4, 5, 6);
+            let arrB = [1, 2, 3, 4, 5, 6];
+
+            console.log(arrA);
+            console.log(arrB);
+        };
+
+        document.querySelector("#for-btn").onclick = () => {
+            let arr = [5, 5, 7, 2, 8, 10, 97];
+            for (let i = 0, j = arr.length; i < j; i++) {
+                console.log(arr[i]);
+            }
+        };
+
+        document.querySelector("#for-in-btn").onclick = () => {
+            let arr = [5, 5, 7, 5, 2, 8, 10, 97];
+            for (let i in arr) {
+                console.log(arr[i]);
+            }
+        };
+
+        document.querySelector("#foreach-btn").onclick = () => {
+            let arr = [5, 5, 7, 5, 2, 8, 10, 97];
+            arr.forEach(i => {
+                console.log(i)
+            });
+        };
+
+    };
+</script>
+
+</body>
+</html>
