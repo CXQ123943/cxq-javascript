@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数自执行</title>
+</head>
+<body>
+
+<button type="button" id="function-self-executing">函数自执行</button>
+
+<script type="text/javascript">
+
+    window.onload = () => {
+        let functionSelfExecuting = document.querySelector("#function-self-executing").onclick = () => {
+            let result = function add(numA, numB) {
+                return numA + numB;
+            }(1, 2);
+
+            console.log(result)
+        };
+    };
+</script>
+
+</body>
+</html>
