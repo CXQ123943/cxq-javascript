@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组API方法</title>
+</head>
+<body>
+
+<button id="isArray-btn" type="button">isArray()函数</button>
+<br/>
+<button id="toString-btn" type="button">toString()函数</button>
+<br/>
+<button id="unshift-btn" type="button">unshift()函数</button>
+<br/>
+<button id="shift-btn" type="button">shift()函数</button>
+<br/>
+<button id="push-btn" type="button">push()函数</button>
+<br/>
+<button id="pop-btn" type="button">pop()函数</button>
+<br/>
+<button id="splice-delete-btn" type="button">splice()删除函数</button>
+<br/>
+<button id="splice-insert-btn" type="button">splice()添加函数</button>
+<br/>
+<button id="splice-update-btn" type="button">splice()修改函数</button>
+<br/>
+<button id="concat-btn" type="button">concat()函数</button>
+<br/>
+<button id="join-btn" type="button">join()函数</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+        document.querySelector("#isArray-btn").onclick = () => {
+            let a = 123;
+            let b = [1, 2, 3];
+            console.log(Array.isArray(a));
+            console.log(Array.isArray(b));
+        };
+
+        document.querySelector("#toString-btn").onclick = () => {
+            let arr = [4, 5, 24, 6, 7, 2, 6, 4];
+            console.log(arr.toString());
+        };
+
+        document.querySelector("#unshift-btn").onclick = () => {
+            let arr = [1, 2, 3];
+            let result = arr.unshift(100, 103421);
+            console.log(arr);
+            console.log(result);
+        };
+
+        document.querySelector("#shift-btn").onclick = () => {
+            let arr = [1, 2, 3];
+            let result = arr.shift();
+            console.log(arr);
+            console.log(result);
+        };
+
+        document.querySelector("#push-btn").onclick = () => {
+            let arr = [1, 2, 3];
+            let result = arr.push(100, 111);
+            console.log(arr);
+            console.log(result);
+        };
+
+
+        document.querySelector("#pop-btn").onclick = () => {
+            let arr = [1, 2, 3];
+            let result = arr.pop();
+            console.log(arr);
+            console.log(result);
+        };
+
+        document.querySelector("#splice-delete-btn").onclick = () => {
+            let arr = [1, 2, 3, 4, 5];
+            let result = arr.splice(1, 3);
+            console.log(arr);
+            console.log(result);
+        };
+
+        document.querySelector("#splice-insert-btn").onclick = () => {
+            let arr = [1, 2, 5];
+            let result = arr.splice(2, 0, 3, 4);
+            console.log(arr);
+            console.log(result);
+        };
+
+        document.querySelector("#splice-update-btn").onclick = () => {
+            let arr = [1, 2, 4, 4, 4, 6];
+            let result = arr.splice(2, 3, 3, 4, 5);
+            console.log(arr);
+            console.log(result);
+        };
+
+        document.querySelector("#concat-btn").onclick = () => {
+            let arrA = [1, 2, 3];
+            let arrB = [3, 4, 5];
+            let result = arrA.concat(arrB);
+            console.log(arrA);
+            console.log(arrB);
+            console.log(result);
+        };
+
+        document.querySelector("#join-btn").onclick = () => {
+            let arr = [1, 2, 3];
+            let result = arr.join("--");
+            console.log(arr);
+            console.log(result);
+        };
+
+    };
+</script>
+
+</body>
+</html>
