@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+
+<button id="closure-btn" type="button">闭包测试</button>
+<br/>
+<button id="es5-function-btn" type="button">ES5函数定义</button>
+<br/>
+<button id="es6-function-btn" type="button">ES6函数定义</button>
+<br/>
+
+<script type="text/javascript">
+
+    document.querySelector("#closure-btn").onclick = () => {
+        let name = "jack";
+
+        /*JS函数可以嵌套*/
+        function inner() {
+            let money = 100;
+            console.log(name);
+        }
+
+        /*函数需要手动调用*/
+        inner();
+
+        /*父函数无法使用子函数的变量*/
+        console.log(money);
+    };
+
+    document.querySelector("#es5-function-btn").onclick = () => {
+        console.log(es5FunctionA(1, 2, 3));
+        console.log(es5FunctionB());
+    };
+
+    document.querySelector("#es6-function-btn").onclick = () => {
+        console.log(es6FunctionA());
+        console.log(es6FunctionB("hello"));
+        console.log(es6FunctionC("hello", "world"));
+        console.log(es6FunctionD());
+        console.log(es6FunctionE(5, 6));
+        console.log(es6FunctionF(7, 8));
+    };
+
+    function es5FunctionA(numA, numB, numC) {
+        return numA + numB + numC;
+    }
+
+    function es5FunctionB() {
+        console.log("total");
+    }
+
+    let es6FunctionA = () => {
+        console.log("没有参数也必须写()");
+    };
+
+    let es6FunctionB = num => {
+        console.log("参数是：", num);
+        console.log("一个参数可以写()，也可以不写()");
+    };
+
+    let es6FunctionC = (numA, numB) => {
+        console.log("参数是：", numA, numB);
+    };
+
+    let es6FunctionD = () => console.log("函数体中有只有一行代码可以省略{}");
+
+    let es6FunctionE = (numA, numB) => {
+        console.log("如果函数体中唯一一行代码使用了return，则不能省略{}");
+        return numA + numB;
+    };
+
+    let es6FunctionF = (numA, numB) => numA + numB;
+
+</script>
+
+</body>
+</html>
