@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section id="this-in-es5">
+    <ul>
+        <li>在我心上用力的开一枪</li>
+        <li>让一切归零在这声巨响</li>
+        <li>如果爱是说什么都不能放</li>
+        <li>我不挣扎</li>
+    </ul>
+</section>
+
+<section id="this-in-es6">
+    <ul>
+        <li>在我心上用力的开一枪</li>
+        <li>让一切归零在这声巨响</li>
+        <li>如果爱是说什么都不能放</li>
+        <li>我不挣扎</li>
+    </ul>
+</section>
+
+
+<script type="text/javascript">
+    window.onload = () => {
+        let thisInEs5Sec = document.querySelector("#this-in-es5");
+        let lisInEs5Sec = thisInEs5Sec.querySelectorAll("li");
+        for (let i = 0, j = lisInEs5Sec.length; i < j; i++) {
+            lisInEs5Sec[i].onmouseover = function () {
+                console.log("es5: ", this);
+                this["style"]["backgroundColor"] = "red";
+            };
+            lisInEs5Sec[i].onmouseout = function () {
+                this["style"]["backgroundColor"] = "";
+            }
+        }
+
+        let thisInEs6Sec = document.querySelector("#this-in-es6");
+        let lisInEs6Sec = thisInEs6Sec.querySelectorAll("li");
+        for (let i = 0, j = lisInEs6Sec.length; i < j; i++) {
+            lisInEs6Sec[i].onmouseover = () => {
+                console.log("es6: ", this);
+                lisInEs6Sec[i]["style"]["backgroundColor"] = "red";
+            };
+            lisInEs6Sec[i].onmouseout = () => {
+                lisInEs6Sec[i]["style"]["backgroundColor"] = "";
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>
