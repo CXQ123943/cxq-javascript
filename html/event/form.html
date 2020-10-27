@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form表单</title>
+</head>
+<body>
+
+<section id="test-form">
+    <form action="#" id="login-form" method="get">
+        <label>
+            <span>账号：</span>
+            <input id="username-ipt" name="username"/>
+        </label>
+        <label>
+            <span>密码：</span>
+            <input id="password-ipt" type="password" name="password"/>
+        </label>
+        <button type="submit">登录</button>
+        <button type="reset">重置</button>
+    </form>
+</section>
+
+<script type="text/javascript">
+    window.onload = () => {
+        let loginForm = document.querySelector("#login-form");
+        let usernameIpt = document.querySelector("#username-ipt");
+        let passwordIpt = document.querySelector("#password-ipt");
+
+        loginForm.onsubmit = () => {
+            if ("" === usernameIpt["value"] || "" === passwordIpt["value"]) {
+                alert("账号或者密码不能为空！");
+                return false;
+            }
+        };
+
+        loginForm.onreset = () => {
+            let response = confirm("您将要重置表单，确认吗?");
+            if (!response) {
+                return false;
+            }
+        };
+
+        loginForm.onkeyup = () => {
+            usernameIpt["value"] = usernameIpt["value"].toUpperCase();
+        };
+
+        usernameIpt.onblur = () => {
+            if (!usernameIpt["value"].match("^[\\w]+$")) {
+                usernameIpt["value"] = "";
+                usernameIpt.focus();
+                alert("账号中不允许存在非法字符！");
+            }
+        };
+
+    };
+</script>
+
+</body>
+</html>
