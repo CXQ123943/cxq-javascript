@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构</title>
+</head>
+<body>
+
+<button id="array-deconstruction-btn" type="button">数组解构</button>
+<br/>
+<button id="json-deconstruction-btn" type="button">JSON解构</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+
+        document.querySelector("#array-deconstruction-btn").onclick = () => {
+            /*let arr = [1, 2, 3, 4];
+            let a = arr[0];
+            let b = arr[1];
+            let c = arr[2];
+            console.log(a, b, c);*/
+
+            let arr = [1, 2, 3, 4];
+            let [a, b, c] = arr;
+            console.log(a, b, c);
+
+            /*1, 2*/
+            let [a1, b1] = [1, 2, 3];
+            console.log(a1, b1);
+
+            /*1, 2, undefined*/
+            let [a2, b2, c2] = [1, 2];
+            console.log(a2, b2, c2);
+
+            /*1, 2*/
+            let [a3, b3 = 3] = [1, 2];
+            console.log(a3, b3);
+
+            /*1, 3*/
+            let [a4, b4 = 3] = [1];
+            console.log(a4, b4);
+
+            /*3*/
+            let [, , c5] = [1, 2, 3];
+            console.log(c5);
+
+            /*1, 2, 3, 4*/
+            let [a7, [b7, c7], d7] = [1, [2, 3], 4];
+            console.log(a7, b7, c7, d7);
+
+            /*1, [2, 3, 4, 5, 6]*/
+            let [a6, ...b6] = [1, 2, 3, 4, 5, 6];
+            console.log(a6, b6);
+        };
+
+        document.querySelector("#json-deconstruction-btn").onclick = () => {
+            /*let user = {
+                "id": 12,
+                "name": "赵四",
+                "gender": "男",
+                "info": "亚洲舞王"
+            };
+
+            let id = user["id"];
+            let name = user["name"];
+            let gender = user["gender"];
+            console.log(id, name, gender);*/
+
+            let user = {
+                "id": 12,
+                "name": "赵四",
+                "gender": "男",
+                "info": "亚洲舞王"
+            };
+
+            let {name: name01, id: id01, gender: gender01} = user;
+            console.log(id01, name01, gender01);
+
+            let {age: age02} = user;
+            console.log(age02);
+
+            let {name: name03 = "刘能", age: age03 = 50} = user;
+            console.log(name03, age03);
+
+        }
+    }
+</script>
+</body>
+</html>
