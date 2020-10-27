@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json</title>
+</head>
+<body>
+
+<button id="declaration-btn" type="button">JSON声明</button>
+<br/>
+<button id="for-in-btn" type="button">JSON遍历</button>
+<br/>
+<button id="dml-btn" type="button">JSON操作</button>
+<br/>
+<button id="serialization-btn" type="button">JSON序列化</button>
+<br/>
+<button id="deserialization-btn" type="button">JSON反序列化</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+        document.querySelector("#declaration-btn").onclick = () => {
+            let user = {
+                "id": 9527,
+                "name": "赵四",
+                "gender": "男",
+                "info": "亚洲舞王"
+            };
+
+            console.log(user);
+            console.log(user.id);
+            console.log(user.name);
+            console.log(user["gender"]);
+            console.log(user["info"]);
+        };
+
+        document.querySelector("#for-in-btn").onclick = () => {
+            let user = {
+                "id": 9527,
+                "name": "赵四",
+                "gender": "男",
+                "info": "亚洲舞王"
+            };
+
+            for (let key in user) {
+                console.log(key, ":", user[key]);
+            }
+        };
+
+        document.querySelector("#dml-btn").onclick = () => {
+
+            let user = {
+                "id": 9527,
+                "name": "赵四",
+                "gender": "男",
+                "info": "亚洲舞王"
+            };
+
+            /*insert*/
+            user["age"] = 50;
+            console.log(user);
+
+            /*update*/
+            user["age"] = 52;
+            console.log(user);
+
+            /*delete*/
+            delete user["age"];
+            console.log(user);
+        };
+
+        document.querySelector("#serialization-btn").onclick = () => {
+
+            /*all field*/
+            let zhaosi = JSON.stringify({
+                "name": "赵四",
+                "gender": "男"
+            });
+            JSON.stringify(zhaosi);
+            console.log(zhaosi);
+
+            /*only name field*/
+            let dajiao = JSON.stringify({
+                "name": "大脚",
+                "gender": "女",
+                "age": 50
+            }, ["name", "gender"]);
+            console.log(dajiao);
+        };
+
+        document.querySelector("#deserialization-btn").onclick = () => {
+            // JS中的字符串可以使用 `` 符号来避免频繁拼接。
+            let zhaosiStr = `{"name":"赵四", "gender":"男"}`;
+            let zhaosi = JSON.parse(zhaosiStr);
+            console.log(zhaosi);
+        };
+
+    };
+</script>
+
+</body>
+</html>
