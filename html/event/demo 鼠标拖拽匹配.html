@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标拖拽匹配</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        #fixed {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: relative;
+        }
+
+        #hollow {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        #variety {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section id="fixed">
+    <div id="hollow"></div>
+</section>
+<section id="variety"></section>
+
+<script type="text/javascript">
+    window.onload = () => {
+        let variety = document.querySelector("#variety");
+        let hollow = document.querySelector("#hollow");
+
+        variety.onmousedown = event => {
+            let ev = event || window.event;
+            let innerLeft = ev.clientX - variety.offsetLeft;
+            let innerTop = ev.clientY - variety.offsetTop;
+
+            document.onmousemove = event => {
+                let ev = event || window.event;
+                variety["style"]["left"] = ev.clientX - innerLeft + "px";
+                variety["style"]["top"] = ev.clientY - innerTop + "px";
+            };
+
+            document.onmouseup = () => {
+                document.onmousemove = null;
+                if (variety.offsetLeft === hollow.offsetLeft && variety.offsetTop === hollow.offsetTop) {
+                    variety.style.backgroundColor = "red";
+                }
+            };
+        };
+    };
+
+</script>
+
+</body>
+</html>
