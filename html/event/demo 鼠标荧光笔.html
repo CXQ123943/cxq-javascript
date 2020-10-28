@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标荧光笔</title>
+    <style type="text/css">
+        body {
+            height: 1000px;
+            width: 5000px;
+        }
+
+        #pen {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            border-radius: 50%;
+
+            /*给我一个定位方法，我才能使用left和top*/
+            position: absolute;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="pen"></section>
+
+<script type="text/javascript">
+
+    window.onload = () => {
+        let pen = document.querySelector("#pen");
+
+        document.onmousemove = event => {
+            let ev = event || window.event;
+            let x = ev.clientX;
+            let y = ev.clientY;
+            let height = pen.offsetHeight;
+            let width = pen.offsetWidth;
+            let scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            /*pen的左距离 = 鼠标横坐标 + 滚动条距离页面左边界的距离 - pen半宽 + "px"*/
+            pen["style"]["left"] = x + scrollLeft - (width / 2) + "px";
+            pen["style"]["top"] = y + scrollTop - (height / 2) + "px";
+        };
+    };
+
+
+
+
+</script>
+
+</body>
+</html>
