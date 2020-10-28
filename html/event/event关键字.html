@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event关键字</title>
+
+</head>
+<body>
+
+<script type="text/javascript">
+    window.onload = () => {
+        document.onclick = () => {
+            let ev = event || window.event;
+            let x = ev.clientX;
+            let y = ev.clientY;
+            console.log(x, y);
+        };
+    };
+</script>
+
+</body>
+</html>
