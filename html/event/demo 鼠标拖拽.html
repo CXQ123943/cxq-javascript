@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标拖拽</title>
+    <style type="text/css">
+        #drag {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="drag"></div>
+
+<script type="text/javascript">
+    window.onload = () => {
+        let drag = document.querySelector("#drag");
+
+        drag.onmousedown = event => {
+            let ev = event || window.event;
+            let left = ev.clientX - drag.offsetLeft;
+            let top = ev.clientY - drag.offsetTop;
+
+            /*在鼠标按下的前提下移动**/
+            document.onmousemove = event => {
+                let ev = event || window.event;
+                drag["style"]["left"] = ev.clientX - left +"px";
+                drag["style"]["top"] = ev.clientY - top +"px";
+                drag["style"]["background-color"] = "yellow";
+            };
+
+            drag.onmouseup = () => {
+                document.onmousemove = null;
+                drag["style"]["background-color"] = "red";
+            };
+        };
+    };
+</script>
+
+</body>
+</html>
