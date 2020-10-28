@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width:20px;
+            height:20px;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+    <img class="bug" src="../../image/bug.png" alt="">
+</section>
+
+<script type="text/javascript">
+    window.onload = () => {
+        document.onmousemove = (event) => {
+            let oEvent = event || window.event;
+            let bugs = document.querySelectorAll(".bug");
+            bugs[0]["style"]["left"] = oEvent.clientX + "px";
+            bugs[0]["style"]["top"] = oEvent.clientY + "px";
+
+            for (let i = bugs.length - 1; i > 0; i--) {
+                bugs[i]["style"]["left"] = bugs[i - 1]["style"]["left"];
+                bugs[i]["style"]["top"] = bugs[i - 1]["style"]["top"];
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>
