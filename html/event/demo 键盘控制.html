@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘控制</title>
+    <style type="text/css">
+        #board {
+            width: 1000px;
+            height: 500px;
+            background: gray;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #car {
+            width: 50px;
+            height: 50px;
+            background-image: url("../../image/bug.png");
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="board">
+    <div id="car"></div>
+</section>
+
+<script type="text/javascript">
+    window.onload = () => {
+        const [leftKey, topKey, rightKey, bottomKey] = [37, 38, 39, 40];
+        const [horizontalStep, verticalStep] = [50, 50];
+        let board = document.querySelector("#board");
+        let car = document.querySelector("#car");
+
+        document.onkeydown = event => {
+            let ev = event || window.event;
+            switch (ev.keyCode) {
+                case leftKey :
+                    if (car.offsetLeft >= 50) {
+                        car["style"]["left"] = car.offsetLeft +- horizontalStep + "px";
+                    }
+                    break;
+                case topKey :
+                    if (car.offsetTop >= 50) {
+                        car["style"]["top"] = car.offsetTop - verticalStep + "px";
+                    }
+                    break;
+                case rightKey :
+                    if (car.offsetLeft < (1000 - 50)) {
+                        car["style"]["left"] = car.offsetLeft + horizontalStep + "px";
+                    }
+                    break;
+                case bottomKey :
+                    if (car.offsetTop < (500 - 50)) {
+                        car["style"]["top"] = car.offsetTop + verticalStep + "px";
+                    }
+                    break;
+            }
+        };
+    };
+</script>
+
+</body>
+</html>
