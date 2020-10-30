@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #screen {
+            width: 505px;
+            height: 200px;
+            outline: 1px solid red;
+            margin: 5px auto;
+            overflow-y: auto;
+        }
+
+        #msg {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<section id="screen"></section>
+<section id="msg">
+    <label>
+        <textarea id="textarea" rows="3" cols="60"></textarea>
+    </label>
+</section>
+
+<script type="text/javascript">
+    /*需求：模拟聊天框，使用 `shift + Enter` 组合提交信息。*/
+    window.onload = () => {
+        let screen = document.querySelector("#screen");
+        let textarea = document.querySelector("#textarea");
+        textarea.focus();
+        document.onkeydown = (ev) => {
+            ev = ev || event;
+            if (ev.keyCode === 13 && ev.shiftKey) {
+                let msgHead = `[赵四]:192.168.0.0:<br/>::`;
+                screen.innerHTML += msgHead + textarea["value"] + "<br/><br/>";
+                textarea["value"] = "";
+                textarea.focus();
+            }
+        }
+    }
+</script>
+</body>
+</html>
