@@ -43,5 +43,5 @@ canvas {
     bottom: 80px;
     color: #fff;
     font-size: 40px;
-    font-family: "Overpass", Roboto;
+    font-family: "Overpass", Roboto, sans-serif;
 }
