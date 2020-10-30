@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数码时钟</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+
+        #clock {
+            width: 1000px;
+            margin: 0 auto;
+            border: 5px inset black;
+            padding: 20px;
+            font-size: 50px;
+            background-color: beige;
+        }
+
+        #date {
+            font-size: 22px;
+            color: blue;
+        }
+
+        #time {
+            font-size: 0.8em;
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<h4>数码时钟案例</h4>
+<section id="clock">
+    <div id="date"></div>
+    <div id="time"></div>
+</section>
+
+<script type="text/javascript">
+
+    /*需求：制作一个数码时钟*/
+    window.onload = () => {
+        /*在定时器开启之前，先调用一次show;*/
+        task();
+        setInterval(task, 1000);
+    };
+
+    /*定时器任务*/
+    let task = () => {
+        let now = new Date();
+        let yy = now.getFullYear();
+        let mm = format(now.getMonth() + 1);
+        let dd = format(now.getDate());
+        let hh = format(now.getHours());
+        let mi = format(now.getMinutes());
+        let ss = format(now.getSeconds());
+        let dateArt = document.querySelector("#date");
+        let timeArt = document.querySelector("#time");
+
+        dateArt.innerHTML = `${yy} - ${mm} - ${dd}`;
+        timeArt.innerHTML = `${hh} : ${mi} : ${ss}`;
+    };
+
+    /*对一位数的值进行处理，在前面加上一个0，否则原样返回*/
+    let format = obj => {
+        return obj < 10 ? "0" + obj : obj;
+    };
+</script>
+
+
+</body>
+</html>
