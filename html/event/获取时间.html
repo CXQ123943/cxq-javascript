@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #screen {
+            width: 240px;
+            height: 20px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<section id="screen"></section>
+<div><button id="current-date-btn">获取当前时间</button></div>
+
+<script type="text/javascript">
+
+    /*需求：点击一个按钮，能够显示出当前的时间。*/
+    window.onload = () => {
+        let currentDateBtn = document.querySelector("#current-date-btn");
+        currentDateBtn.onclick = () => {
+            let screen = document.querySelector("#screen");
+            let now = new Date();
+            let yyyy = now.getFullYear();
+            let mm = now.getMonth() + 1;
+            let dd = now.getDate();
+            let day = now.getDay();
+            let hh = now.getHours();
+            let mi = now.getMinutes();
+            let ss = now.getSeconds();
+            screen.innerHTML = `${yyyy}年${mm}月${dd}日 星期${day} ${hh}:${mi}:${ss}`;
+        }
+    }
+</script>
+</body>
+</html>
