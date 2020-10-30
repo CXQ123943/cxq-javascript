@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右键菜单</title>
+    <style type="text/css">
+        #context-menu {
+            width: 90px;
+            height: 130px;
+            background-color: beige;
+            border: 1px solid black;
+            display: none;
+            position: absolute;
+        }
+
+        .menu {
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<nav>
+    <ul id="context-menu">
+        <li><a href="#" class="menu">返回(B)</a></li>
+        <li><a href="#" class="menu">前进(F)</a></li>
+        <li><a href="#" class="menu">重新加载</a></li>
+        <li><a href="#" class="menu">另存为(A)...</a></li>
+        <li><a href="#" class="menu">打印(p)...</a></li>
+        <li><a href="#" class="menu">投射(C)...</a></li>
+    </ul>
+</nav>
+
+<script type="text/javascript">
+    /*需求：当在页面上点击鼠标右键的时候，弹出自己自定义的右键菜单。*/
+    window.onload = () => {
+        let contextMenu = document.querySelector("#context-menu");
+        document.oncontextmenu = event => {
+            let ev = event || window.even;
+            contextMenu["style"]["left"] = ev.clientX + "px";
+            contextMenu["style"]["top"] = ev.clientY + "px";
+            contextMenu["style"]["display"] = "block";
+            return false;
+        };
+
+        document.onclick = () => {
+            contextMenu["style"]["display"] = "none";
+        };
+    };
+</script>
+
+</body>
+</html>
