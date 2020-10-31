@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侧边栏</title>
+    <style type="text/css">
+        #sidebar {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: absolute;
+            top: 50px;
+            left: -200px;
+        }
+
+        #sidebar span {
+            width: 20px;
+            height: 60px;
+            background-color: aqua;
+            line-height: 20px;
+            position: absolute;
+            right: -20px;
+            top: 70px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section id="sidebar">
+    <span>侧边栏</span>
+</section>
+
+<script type="text/javascript">
+    let timer, sidebar;
+    let [speed, period] = [10, 50];
+
+    window.onload = () => {
+        sidebar = document.querySelector("#sidebar");
+        sidebar.onmouseover = () => {
+            move(0);
+        };
+        sidebar.onmouseout = () => {
+            move(-200);
+        };
+    };
+
+    let move = (target) => {
+        let currentSpeed = sidebar.offsetLeft > target ? -speed : speed;
+        clearInterval(timer);
+        timer = setInterval(() => {
+            if (sidebar.offsetLeft === target) {
+                clearInterval(timer);
+                return;
+            }
+            sidebar["style"]["left"] = sidebar.offsetLeft + currentSpeed + "px";
+        }, period);
+    };
+
+</script>
+
+</body>
+</html>
