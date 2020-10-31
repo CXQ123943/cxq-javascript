@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球运动</title>
+    <style type="text/css">
+        #board {
+            margin: 10px auto;
+            width: 600px;
+            height: 100px;
+            outline: 5px solid black;
+            position: relative;
+        }
+
+        #ball {
+            width: 100px;
+            height: 100px;
+            background-image: radial-gradient(circle at center, red, black);
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="board">
+    <div id="ball"></div>
+</section>
+
+<script type="text/javascript">
+    /*每隔50ms移动10px*/
+    const [period, speed] = [50, 10];
+    const [boardWidth, ballWidth] = [600, 100];
+    let timer, ball;
+
+    /* 需求：点击小球，小球开始匀速运动。*/
+    window.onload = () => {
+        ball = document.querySelector("#ball");
+        ball.onclick = () => {
+            clearInterval(timer);
+            timer = setInterval(move, period);
+        };
+    };
+
+    let move = () => {
+        if (ball.offsetLeft >= (boardWidth - ballWidth)) {
+            clearInterval(timer);
+            return;
+        }
+        ball["style"]["left"] = ball.offsetLeft + speed + "px";
+    };
+</script>
+
+</body>
+</html>
