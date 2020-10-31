@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    window.onload = function () {
+        let testSec = document.querySelector("#text-sec");
+
+        document.querySelector("#set-inline-style-btn").onclick = () => {
+            testSec["style"]["width"] = "1000px";
+        };
+
+        document.querySelector("#get-inline-style-btn").onclick = () => {
+            console.log("width: ", testSec["style"]["width"]);
+            console.log("height: ", testSec["style"]["height"]);
+        };
+
+        document.querySelector("#get-style-btn").onclick = () => {
+            console.log("width: ", css(testSec, "width"));
+            console.log("height: ", css(testSec, "height"));
+        };
+
+        function css(obj, key) {
+            return obj["currentStyle"] ? obj["currentStyle"][key] : getComputedStyle(obj)[key];
+        }
+    };
+
+</script>
+
+</body>
+</html>
