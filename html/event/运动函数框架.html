@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运动函数框架</title>
+    <style type="text/css">
+        #test-sec {
+            width: 200px;
+            height: 200px;
+            font-size: 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<section id="test-sec">完美运动框架</section>
+
+<script type="text/javascript">
+    /*需求：将section高度变为500px，宽度变为1000px，字体大小变为50px。*/
+    window.onload = () => {
+        let testSec = document.querySelector("#test-sec");
+        let target = {"width": "500px", "height": "1000px", "fontSize": "50px"};
+        let params = {"target": target, "callback": callback};
+        testSec.onclick = () => move(testSec, params);
+
+        function callback() {
+            alert("change over!");
+        }
+    };
+
+    /* 完美运动框架
+    * obj：要发生运动的元素，object类型。
+    * params：运动参数，json类型：
+    *     target: 运动目标，json类型。
+    *     speedNum：缓冲常数，数值越大，幅度越大，默认10。
+    *     period：运动周期，数值越大，运动越快，默认50毫秒。
+    *     callback：运动结束后的回调函数，可以省略。
+    * */
+    let move = (obj, params) => {
+        const speedNum = params["speedNum"] ? params["speedNum"] : 10;
+        const period = params["period"] ? params["period"] : 50;
+        const target = params["target"] ? params["target"] : null;
+        const callback = params["callback"] ? params["callback"] : null;
+        if (!target) return;
+
+        clearInterval(obj.timer);
+        obj.timer = setInterval(() => {
+            for (let key in target) {
+                if (target.hasOwnProperty(key)) {
+                    let targetValue = parseInt(target[key]);
+                    let currentValue = parseInt(css(obj, key));
+
+                    if (currentValue === targetValue) {
+                        clearTimeout(obj.timer);
+                        if (callback) {
+                            callback();
+                        }
+                        return;
+                    }
+                    let speed = (targetValue - currentValue) / speedNum;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    obj["style"][key] = currentValue + speed + "px";
+                }
+            }
+        }, period);
+
+        let css = (obj, key) => {
+            return obj["currentStyle"] ? obj["currentStyle"][key] : getComputedStyle(obj)[key];
+        };
+
+    };
+</script>
+</body>
+</html>
