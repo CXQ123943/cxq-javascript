@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="item-list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+<button id="append-btn" type="button">追加一个子元素</button>
+<br/>
+<button id="move-btn" type="button">移动一个子元素</button>
+<br/>
+<button id="insert-btn" type="button">在头部插入一个子元素</button>
+<br/>
+<button id="delete-btn" type="button">删除最后一个子元素</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+        let itemList = document.querySelector("#item-list");
+
+        document.querySelector("#append-btn").onclick = () => {
+            let newLi = document.createElement("li");
+            newLi.innerText = "5";
+            itemList.append(newLi);
+        };
+
+        document.querySelector("#move-btn").onclick = () => {
+            let firstLi = document.querySelector("#item-list li:first-child");
+            itemList.append(firstLi);
+        };
+
+        document.querySelector("#insert-btn").onclick = () => {
+            let newLi = document.createElement("li");
+            newLi.innerText = "0";
+            itemList.insertBefore(newLi, itemList.querySelectorAll("li")[0]);
+        };
+
+        document.querySelector("#delete-btn").onclick = () => {
+            let lastLi = document.querySelector("#item-list li:last-child");
+            itemList.removeChild(lastLi);
+        };
+    };
+</script>
+
+</body>
+</html>

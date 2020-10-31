@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素</title>
+</head>
+<body>
+
+<ul id="item-list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+<button id="by-static-btn" type="button">静态获取元素</button>
+<br/>
+<button id="by-dynamic-btn" type="button">动态获取元素</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+
+        document.querySelector("#by-static-btn").onclick = () => {
+            let itemList = document.querySelector("#item-list");
+            let lis = itemList.querySelectorAll("li");
+            console.log(lis.length);
+            for (let i = 0, j = lis.length; i < j; i++) {
+                console.log("lis.length: " + lis.length);
+                itemList.innerHTML += `<li>${lis.length + i + 1}</li>`
+            }
+        };
+
+        document.querySelector("#by-dynamic-btn").onclick = () => {
+            let itemList = document.getElementById("item-list");
+            let lis = itemList.getElementsByTagName("li");
+            for (let i = 0, j = lis.length; i < j; i++) {
+                console.log("lis.length: " + lis.length);
+                itemList.innerHTML += `<li>${lis.length + 1}</li>`;
+            }
+        };
+
+    };
+
+</script>
+
+</body>
+</html>
