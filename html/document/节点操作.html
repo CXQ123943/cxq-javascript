@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作</title>
+</head>
+<body>
+<ul id="item-list">
+    <li>node-001</li>
+    <li>node-002</li>
+    <li>node-003</li>
+    <li>node-004</li>
+</ul>
+
+<button id="parent-node-btn" type="button">获取父节点</button>
+<br/>
+<button id="child-node-btn" type="button">获取子节点（包括文本）</button>
+<br/>
+<button id="children-btn" type="button">获取子节点（不包括文本）</button>
+<br/>
+<button id="first-node-btn" type="button">获取首节点</button>
+<br/>
+<button id="last-node-btn" type="button">获取尾节点</button>
+<br/>
+<button id="next-node-btn" type="button">获取弟弟节点</button>
+<br/>
+<button id="previous-node-btn" type="button">获取哥哥节点</button>
+<br/>
+
+<script type="text/javascript">
+    window.onload = () => {
+        let itemList = document.querySelector("#item-list");
+        let firstLi = document.querySelector("#item-list li:first-child");
+        let lastLi = document.querySelector("#item-list li:last-child");
+
+        document.querySelector("#parent-node-btn").onclick = () => {
+            console.log(firstLi.parentNode);
+        };
+
+        document.querySelector("#child-node-btn").onclick = () => {
+            console.log(itemList.childNodes);
+        };
+
+        document.querySelector("#children-btn").onclick = () => {
+            console.log(itemList.children);
+        };
+
+        document.querySelector("#children-btn").onclick = () => {
+            console.log(itemList.children);
+        };
+
+        document.querySelector("#first-node-btn").onclick = () => {
+            console.log(itemList.firstElementChild || itemList.firstChild);
+        };
+
+        document.querySelector("#last-node-btn").onclick = () => {
+            console.log(itemList.lastElementChild || itemList.lastChild);
+        };
+
+        document.querySelector("#next-node-btn").onclick = () => {
+            console.log(firstLi.nextElementSibling || firstLi.nextSibling);
+        };
+
+        document.querySelector("#previous-node-btn").onclick = () => {
+            console.log(lastLi.previousElementSibling || lastLi.previousSibling);
+        };
+    };
+</script>
+</body>
+</html>
