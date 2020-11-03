@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+</head>
+<body>
+
+<button id="test-cookie" type="button">测试cookie</button>
+<br/>
+<button id="set-cookie" type="button">测试setCookie()</button>
+<br/>
+<button id="get-cookie" type="button">测试getCookie()</button>
+<br/>
+<button id="delete-cookie" type="button">测试delCookie()</button>
+<br/>
+
+<script type="text/javascript" src="../../script/document-script/cookie.js"></script>
+<script type="text/javascript">
+    window.onload = () => {
+        document.querySelector("#test-cookie").onclick = () => {
+            document.cookie = "a=1";
+            document.cookie = "a=2";
+            document.cookie = "b=3";
+            console.log(document.cookie);
+        };
+
+        document.querySelector("#set-cookie").onclick = () => {
+            setCookie("a", "1");
+            setCookie("b", "2", -1);
+            console.log(document.cookie);
+        };
+
+        document.querySelector("#get-cookie").onclick = () => {
+            setCookie("user", "cxq");
+            console.log(getCookie("user"));
+        };
+
+        document.querySelector("#delete-cookie").onclick = () => {
+            setCookie("user", "cxq", 7);
+            console.log(getCookie("user"));
+            delCookie("user");
+            console.log(getCookie("user"));
+        };
+    };
+</script>
+
+</body>
+</html>
