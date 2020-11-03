@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*需求：将session-storage-a.html中在sessionStorage中存储的数据全部取出。*/
+    window.onload = () => {
+        if (!sessionStorage) {
+            alert("浏览器不支持sessionStorage!");
+            return false;
+        }
+
+        let strData = sessionStorage.getItem("strData");
+        console.log(strData);
+
+        sessionStorage.removeItem("strData");
+        strData = sessionStorage.getItem("strData");
+        console.log(strData);
+
+        let jsonData = sessionStorage.getItem("jsonData");
+        console.log(JSON.parse(jsonData));
+
+        sessionStorage.clear();
+        jsonData = sessionStorage.getItem("jsonData");
+        console.log(JSON.parse(jsonData));
+
+    };
+</script>
+</body>
+</html>

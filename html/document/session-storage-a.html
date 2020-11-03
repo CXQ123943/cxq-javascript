@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="set-item-btn" type="button">sessionStorage存值</button>
+<br/>
+
+<script type="text/javascript">
+    /*需求：在session-storage-a.html中利用SessionStorage存值，并跳入session-storage-b.html页面。*/
+    window.onload = () => {
+        document.querySelector("#set-item-btn").onclick = () => {
+
+            if (!sessionStorage) {
+                alert("浏览器不支持sessionStorage！！！！！");
+                return false;
+            }
+
+            let strData = "纯字符串数据！";
+            let jsonData = {"name": "赵四", "age": 58};
+            sessionStorage.setItem("strData", strData);
+            sessionStorage.setItem("jsonData", JSON.stringify(jsonData));
+            location.href = "session-storage-b.html";
+        }
+    };
+</script>
+</body>
+</html>
