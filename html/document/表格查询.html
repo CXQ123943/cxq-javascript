@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格查询</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+
+        #user-tab, td, th {
+            width: 400px;
+            border: 1px solid red;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .search-sec {
+            width: 405px;
+            margin: 10px auto;
+        }
+    </style>
+
+</head>
+<body>
+
+<section class="search-sec">
+    <fieldset>
+        <legend>搜索</legend>
+        <label><input id="search-ipt"/></label>
+        <button id="search-btn" type="button">按姓名搜索</button>
+    </fieldset>
+</section>
+
+<section>
+    <table id="user-tab">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+        </tr>
+        <tr>
+            <td>001</td>
+            <td>zhaosi</td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>liuneng</td>
+        </tr>
+        <tr>
+            <td>003</td>
+            <td>lisi</td>
+        </tr>
+    </table>
+</section>
+
+<script type="text/javascript">
+    /*需求：查寻目标和表格中内容完全一致（忽略大小写），将背景高亮显示。*/
+    window.onload = () => {
+        let searchIpt = document.querySelector("#search-ipt");
+        searchIpt.focus();
+        document.querySelector("#search-btn").onclick = () => {
+            let tBody = document.querySelector("#user-tab").tBodies[0];
+            let trs = tBody.rows;
+            for (let i = 1, j = trs.length; i < j; i++) {
+                trs[i]["style"]["backgroundColor"] = "";
+                let nameFromTab = trs[i].cells[1].innerText.toUpperCase();
+                let nameFromIpt = searchIpt["value"].toUpperCase();
+                if (nameFromTab === nameFromIpt) {
+                    trs[i]["style"]["backgroundColor"] = "aqua";
+                    searchIpt.focus();
+                }
+            }
+        };
+    };
+</script>
+
+</body>
+</html>
