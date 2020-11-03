@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七天免密登录</title>
+</head>
+<body>
+
+<section>
+    <form id="login-form" action="http://www.baidu.com" method="get">
+        <label>
+            <input id="username-ipt" name="username"/>
+        </label>
+        <label>
+            <input id="password-ipt" name="password" type="password"/>
+        </label>
+        <label>
+            <input id="no-password-cbx" type="checkbox"/>七天免密
+        </label>
+        <button id="login-btn" type="button">登录</button>
+    </form>
+</section>
+
+<script type="text/javascript" src="../../script/document-script/cookie.js"></script>
+<script type="text/javascript">
+    /* 需求：以帐号以 admin/123 为例：
+   1. 当第一次使用 admin/123 进行登录时：
+       - 如果不勾选[7天免密]，直接跳入主页面，cookie中不会记录任何信息。
+       - 如果勾选了[7天免密]，将帐号密码存入cookie中，并设置7天后过期。
+   2. 当我在该 admin/123 过期前（7天内），再次登录时：
+       - 帐号框键入admin之后，密码框自动注入123，[7天免密]自动勾选。
+       - 帐号框键入admin之后，手动取消了勾选[7天免密]，则admin/123将从cookie中被移除。
+   */
+    window.onload = () => {
+        let usernameIpt = document.querySelector("#username-ipt");
+        let passwordIpt = document.querySelector("#password-ipt");
+        let noPasswordCbx = document.querySelector("#no-password-cbx");
+        let loginBtn = document.querySelector("#login-btn");
+        let loginForm = document.querySelector("#login-form");
+
+        usernameIpt.focus();
+
+        loginBtn.onclick = () => {
+            if (noPasswordCbx.checked) {
+                setCookie(usernameIpt["value"], passwordIpt["value"], 7);
+            } else {
+                delCookie(usernameIpt["value"]);
+            }
+            loginForm.submit();
+        };
+
+        usernameIpt.onblur = () => {
+            let passwordFromCookie = getCookie(usernameIpt["value"]);
+            if (passwordFromCookie) {
+                passwordIpt["value"] = passwordFromCookie;
+                noPasswordCbx.checked = "checked";
+            }
+        };
+
+    };
+</script>
+
+</body>
+</html>
