@@ -1,0 +1,4 @@
+getUser({
+  "username": "jack",
+  "gender": "male"
+})

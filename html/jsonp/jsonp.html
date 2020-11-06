@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    function getUser(response) {
+        console.log(response);
+    }
+</script>
+
+<script
+type="text/javascript" src="jsonp.json?callBack=getUser"></script>
+
+</body>
+</html>
