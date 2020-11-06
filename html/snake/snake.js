@@ -1,9 +1,15 @@
-let snakeArray = []; /*初始化蛇关节的数组*/
-let isPause = false; /*游戏是否暂停：未暂停*/
-let snakeSize = 5; /*蛇的初始长度*/
-let direct = "right"; /*蛇初始方向：向右*/
-let speed = 80; /*蛇移动初始速度：80*/
-let score, timer, board, bean; /*游戏初始分数显示区，定时器，面板，豆*/
+let snakeArray = [];
+/*初始化蛇关节的数组*/
+let isPause = false;
+/*游戏是否暂停：未暂停*/
+let snakeSize = 5;
+/*蛇的初始长度*/
+let direct = "right";
+/*蛇初始方向：向右*/
+let speed = 80;
+/*蛇移动初始速度：80*/
+let score, timer, board, bean;
+/*游戏初始分数显示区，定时器，面板，豆*/
 
 /*游戏初始化*/
 onload = () => {
@@ -40,11 +46,9 @@ function createBean() {
         x = parseInt("" + (Math.random() * (1000 / 20))) * 20;
         y = parseInt("" + (Math.random() * (500 / 20))) * 20;
         for (let i = 0, j = snakeArray.length; i < j; i++) {
-            if (snakeArray[i]["offsetLeft"] === x) {
-                if (snakeArray[i]["offsetTop"] === y) {
-                    randomXY();
-                    break;
-                }
+            if (snakeArray[i]["offsetLeft"] === x && snakeArray[i]["offsetTop"] === y) {
+                randomXY();
+                break;
             }
         }
     }
@@ -57,8 +61,8 @@ function createBean() {
 /*键盘监听*/
 function keyListener() {
     document.onkeydown = event => {
-        let oEvent = event || window.event;
-        switch (oEvent.keyCode) {
+        let ev = event || window.event;
+        switch (ev.keyCode) {
             case 37 :
                 if (direct !== "right") {
                     direct = "left";
@@ -88,7 +92,7 @@ function keyListener() {
                 isPause = !isPause;
                 break;
         }
-    }
+    };
 }
 
 /*游戏开始*/
